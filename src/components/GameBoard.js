@@ -14,13 +14,13 @@ const GameBoard = (props) => {
       incorrectAnswers={question.incorrect_answers}
       correctAnswer={question.correct_answer}
       setScores={setScores}
+      isGameOver={props.isGameOver}
     />
   ));
-  //console.log(quizQuestionsElements);
   return (
     <div className="game-board-container">
       {quizQuestionsElements}
-      <BottomPanel renderData={props.renderData} />
+      <BottomPanel renderData={props.renderData} scores={scores} />
       <OverlayBg />
     </div>
   );

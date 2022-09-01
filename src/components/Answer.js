@@ -2,11 +2,15 @@ import React from "react";
 import { Markup } from "react-render-markup";
 
 const Answer = (props) => {
-  const clickHandler = () => {
-    alert(1);
-  };
+  const isCorrectAnswer = props.isCorrectAnswer;
+
   return (
-    <div className="answer" onClick={clickHandler}>
+    <div
+      className="answer"
+      onClick={() => {
+        isCorrectAnswer(props.correctAnswer, props.answer);
+      }}
+    >
       <Markup markup={props.answer} />
     </div>
   );
