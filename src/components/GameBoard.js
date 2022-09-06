@@ -5,7 +5,6 @@ import QuizBox from "./QuizBox";
 
 const GameBoard = (props) => {
   const quizQuestions = props.quizData;
-  const [scores, setScores] = useState(0);
 
   const quizQuestionsElements = quizQuestions.map((question, index) => (
     <QuizBox
@@ -13,14 +12,16 @@ const GameBoard = (props) => {
       key={index}
       incorrectAnswers={question.incorrect_answers}
       correctAnswer={question.correct_answer}
-      setScores={setScores}
+      setScores={props.setScores}
+      scores={props.scores}
       isGameOver={props.isGameOver}
+      quizData={props.quizData}
     />
   ));
   return (
     <div className="game-board-container">
       {quizQuestionsElements}
-      <BottomPanel renderData={props.renderData} scores={scores} />
+      <BottomPanel renderData={props.renderData} scores={props.scores} />
       <OverlayBg />
     </div>
   );

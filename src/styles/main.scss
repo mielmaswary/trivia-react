@@ -122,6 +122,7 @@
         width: 25%;
         text-align: center;
         cursor: pointer;
+        //background-color: $main-blue-bg;
 
         @media (max-width: $tablet) {
           width: 100%;
@@ -134,7 +135,18 @@
           background-color: $main-blue-bg;
         }
       }
+      .correct-chosen {
+        @extend .answer;
+        background-color: $green-bg;
+        color: $white-text-color;
+        &:hover {
+          background-color: $green-bg;
+        }
+      }
     }
+  }
+  .disabled {
+    pointer-events: none;
   }
 }
 .divider {

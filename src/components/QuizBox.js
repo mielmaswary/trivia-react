@@ -1,22 +1,26 @@
 import React from "react";
 import { useMemo } from "react";
+import { useState } from "react";
 import { useRef, useEffect } from "react";
 import shuffle from "../tools/shuffle";
 import Answer from "./Answer";
 import Question from "./Question";
 
 const QuizBox = (props) => {
+  const [isCorrectAnswerClicked, setIsCorrectAnswerClicked] = useState(false);
   const answers = props.incorrectAnswers;
   let shuffledAnswers = answers;
-
+  const [isDisabled, setIsDisabled] = useState(false);
   useMemo(() => {
     answers.push(props.correctAnswer);
     shuffledAnswers = shuffle(shuffledAnswers);
-  }, []);
+  }, [props.quizData]);
 
-  const isCorrectAnswer = (correctAnswer, chosenAnswer) => {
+  const clickAnswerActions = (correctAnswer, chosenAnswer) => {
     if (correctAnswer === chosenAnswer) {
       props.setScores((pre) => pre + 1);
+      setIsCorrectAnswerClicked(true);
+      setIsDisabled(true);
     }
   };
 
@@ -24,12 +28,13 @@ const QuizBox = (props) => {
     <Answer
       answer={answer}
       key={index}
-      isCorrectAnswer={isCorrectAnswer}
+      clickAnswerActions={clickAnswerActions}
       correctAnswer={props.correctAnswer}
+      isCorrectAnswerClicked={isCorrectAnswerClicked}
     />
   ));
   return (
-    <div className="quiz-box-container">
+    <div className={"quiz-box-container" + (isDisabled ? " disabled" : "")}>
       <Question question={props.question} />
       <div className="answers-container">{answersElements}</div>
 

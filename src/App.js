@@ -7,6 +7,7 @@ const App = () => {
   const [isGameOver, setIsGameOver] = useState(true);
   const [quizData, setQuizData] = useState([]);
   const [isGameBoardLoaded, setIsGameBoardLoaded] = useState(false);
+  const [scores, setScores] = useState(0);
 
   const renderData = () => {
     fetch("https://opentdb.com/api.php?amount=5")
@@ -14,6 +15,7 @@ const App = () => {
       .then((data) => {
         setQuizData(data.results);
         setIsGameBoardLoaded(true);
+        setScores(0);
       });
   };
 
@@ -34,6 +36,8 @@ const App = () => {
               quizData={quizData}
               renderData={renderData}
               isGameOver={isGameOver}
+              setScores={setScores}
+              scores={scores}
             />
           )}
         </div>
