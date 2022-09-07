@@ -135,6 +135,10 @@
           background-color: $main-blue-bg;
         }
       }
+      .correct-answer {
+        @extend .answer;
+        background-color: $green-bg;
+      }
       .correct-chosen {
         @extend .answer;
         background-color: $green-bg;

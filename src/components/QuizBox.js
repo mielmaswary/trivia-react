@@ -7,6 +7,8 @@ import Answer from "./Answer";
 import Question from "./Question";
 
 const QuizBox = (props) => {
+  console.log("quizbox render");
+
   const [isCorrectAnswerClicked, setIsCorrectAnswerClicked] = useState(false);
   const answers = props.incorrectAnswers;
   let shuffledAnswers = answers;
@@ -31,6 +33,8 @@ const QuizBox = (props) => {
       clickAnswerActions={clickAnswerActions}
       correctAnswer={props.correctAnswer}
       isCorrectAnswerClicked={isCorrectAnswerClicked}
+      defaultClass={props.defaultClass}
+      setDefaultClass={props.setDefaultClass}
     />
   ));
   return (

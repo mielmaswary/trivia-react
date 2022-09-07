@@ -4,6 +4,8 @@ import OverlayBg from "./OverlayBg";
 import QuizBox from "./QuizBox";
 
 const GameBoard = (props) => {
+  console.log("gameboard render");
+
   const quizQuestions = props.quizData;
 
   const quizQuestionsElements = quizQuestions.map((question, index) => (
@@ -16,12 +18,19 @@ const GameBoard = (props) => {
       scores={props.scores}
       isGameOver={props.isGameOver}
       quizData={props.quizData}
+      defaultClass={props.defaultClass}
+      setDefaultClass={props.setDefaultClass}
     />
   ));
   return (
     <div className="game-board-container">
       {quizQuestionsElements}
-      <BottomPanel renderData={props.renderData} scores={props.scores} />
+      <BottomPanel
+        renderData={props.renderData}
+        scores={props.scores}
+        defaultClass={props.defaultClass}
+        setDefaultClass={props.setDefaultClass}
+      />
       <OverlayBg />
     </div>
   );
