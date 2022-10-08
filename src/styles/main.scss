@@ -139,6 +139,11 @@
         @extend .answer;
         background-color: $green-bg;
       }
+      .answer-chosen {
+        @extend .answer;
+        background-color: $main-blue-bg;
+        color: $white-text-color;
+      }
       .correct-chosen {
         @extend .answer;
         background-color: $green-bg;
@@ -179,6 +184,7 @@
     width: 35%;
     padding: 10px;
     z-index: 2;
+    margin: 4px;
     @media (max-width: $tablet) {
       width: 80%;
     }

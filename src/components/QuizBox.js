@@ -10,6 +10,8 @@ const QuizBox = (props) => {
   console.log("quizbox render");
 
   const [isCorrectAnswerClicked, setIsCorrectAnswerClicked] = useState(false);
+  const [current, setCurrent] = useState(-1);
+
   const answers = props.incorrectAnswers;
   let shuffledAnswers = answers;
   const [isDisabled, setIsDisabled] = useState(false);
@@ -30,11 +32,13 @@ const QuizBox = (props) => {
     <Answer
       answer={answer}
       key={index}
+      index={index}
       clickAnswerActions={clickAnswerActions}
       correctAnswer={props.correctAnswer}
       isCorrectAnswerClicked={isCorrectAnswerClicked}
-      defaultClass={props.defaultClass}
-      setDefaultClass={props.setDefaultClass}
+      className={index === current ? "answer-chosen" : "answer"}
+      setCurrent={setCurrent}
+      current={current}
     />
   ));
   return (
