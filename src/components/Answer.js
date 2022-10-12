@@ -4,17 +4,36 @@ import { Markup } from "react-render-markup";
 //import useForceUpdate from "use-force-update";
 
 const Answer = (props) => {
-  console.log(props.index);
-  console.log("current is " + props.current);
   const clickAnswerActions = props.clickAnswerActions;
-  const [isChosen, setIsChosen] = useState(false);
-
   const clickHandler = (i) => {
-    props.setCurrent(i);
+    props.setChosen(i);
   };
 
+  // const className = props.markAnswersStatus
+  //   ? props.isCorrectAnswer
+  //     ? "correct-answer"
+  //     : props.chosen
+  //     ? "correct-chosen"
+  //     : props.className
+  //   : props.className;
+
+  let className = props.className;
+  if (props.markAnswersStatus) {
+    if (props.isCorrectAnswer) {
+      className = "correct-answer";
+    }
+  }
+
   return (
-    <div className={props.className} onClick={() => clickHandler(props.index)}>
+    <div
+      // className={
+      //   props.isCorrectAnswer && props.markAnswersStatus
+      //     ? "correct-answer"
+      //     : props.className
+      // }
+      className={className}
+      onClick={() => clickHandler(props.index)}
+    >
       <Markup markup={props.answer} />
     </div>
   );

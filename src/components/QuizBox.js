@@ -10,7 +10,7 @@ const QuizBox = (props) => {
   console.log("quizbox render");
 
   const [isCorrectAnswerClicked, setIsCorrectAnswerClicked] = useState(false);
-  const [current, setCurrent] = useState(-1);
+  const [chosen, setChosen] = useState(-1);
 
   const answers = props.incorrectAnswers;
   let shuffledAnswers = answers;
@@ -31,14 +31,22 @@ const QuizBox = (props) => {
   const answersElements = shuffledAnswers.map((answer, index) => (
     <Answer
       answer={answer}
+      isCorrectAnswer={answer === props.correctAnswer}
       key={index}
       index={index}
       clickAnswerActions={clickAnswerActions}
       correctAnswer={props.correctAnswer}
-      isCorrectAnswerClicked={isCorrectAnswerClicked}
-      className={index === current ? "answer-chosen" : "answer"}
-      setCurrent={setCurrent}
-      current={current}
+      // isCorrectAnswerClicked={isCorrectAnswerClicked}
+      className={
+        index === chosen
+          ? props.markAnswersStatus
+            ? "incorrect-chosen"
+            : "answer-chosen"
+          : "answer"
+      }
+      setChosen={setChosen}
+      chosen={chosen}
+      markAnswersStatus={props.markAnswersStatus}
     />
   ));
   return (

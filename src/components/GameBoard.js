@@ -7,7 +7,7 @@ const GameBoard = (props) => {
   console.log("gameboard render");
 
   const quizQuestions = props.quizData;
-
+  const [markAnswersStatus, setMarkAnswersStatus] = useState(false);
   const quizQuestionsElements = quizQuestions.map((question, index) => (
     <QuizBox
       question={question.question.replace("&quot;", "")}
@@ -20,8 +20,13 @@ const GameBoard = (props) => {
       quizData={props.quizData}
       defaultClass={props.defaultClass}
       setDefaultClass={props.setDefaultClass}
+      markAnswersStatus={markAnswersStatus}
     />
   ));
+
+  const markCorrectAnswer = (quizBox) => {
+    setMarkAnswersStatus(true);
+  };
   return (
     <div className="game-board-container">
       {quizQuestionsElements}
@@ -30,6 +35,7 @@ const GameBoard = (props) => {
         scores={props.scores}
         defaultClass={props.defaultClass}
         setDefaultClass={props.setDefaultClass}
+        markCorrectAnswer={markCorrectAnswer}
       />
       <OverlayBg />
     </div>

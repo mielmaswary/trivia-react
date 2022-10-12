@@ -144,9 +144,9 @@
         background-color: $main-blue-bg;
         color: $white-text-color;
       }
-      .correct-chosen {
+      .incorrect-chosen {
         @extend .answer;
-        background-color: $green-bg;
+        background-color: $pink-bg;
         color: $white-text-color;
         &:hover {
           background-color: $green-bg;
