@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import BottomPanel from "./BottomPanel";
+import OverLayLock from "./OverLayLock";
 import OverlayBg from "./OverlayBg";
 import QuizBox from "./QuizBox";
 
@@ -36,6 +37,7 @@ const GameBoard = (props) => {
         markCorrectAnswer={markCorrectAnswer}
       />
       <OverlayBg />
+      {markAnswersStatus && <OverLayLock />}
     </div>
   );
 };
