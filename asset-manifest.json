@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/trivia-react/static/css/main.4052d0fa.css",
-    "main.js": "/trivia-react/static/js/main.10adf6e7.js",
+    "main.js": "/trivia-react/static/js/main.77c745bf.js",
     "index.html": "/trivia-react/index.html",
     "main.4052d0fa.css.map": "/trivia-react/static/css/main.4052d0fa.css.map",
-    "main.10adf6e7.js.map": "/trivia-react/static/js/main.10adf6e7.js.map"
+    "main.77c745bf.js.map": "/trivia-react/static/js/main.77c745bf.js.map"
   },
   "entrypoints": [
     "static/css/main.4052d0fa.css",
-    "static/js/main.10adf6e7.js"
+    "static/js/main.77c745bf.js"
   ]
 }
