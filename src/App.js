@@ -4,8 +4,6 @@ import Loader from "./components/Loader";
 import StartGame from "./components/StartGame";
 
 const App = () => {
-  console.log("app render");
-
   const [isGameOver, setIsGameOver] = useState(true);
   const [quizData, setQuizData] = useState([]);
   const [isGameBoardLoaded, setIsGameBoardLoaded] = useState(false);
@@ -22,7 +20,6 @@ const App = () => {
       });
   };
 
-  const setAnswersDefaultClasses = () => {};
   return (
     <div className="main-container">
       {isGameOver ? (

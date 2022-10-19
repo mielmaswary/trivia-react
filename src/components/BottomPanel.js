@@ -4,7 +4,7 @@ const BottomPanel = (props) => {
   const playAgain = () => {
     window.location.reload(false);
   };
-  const checkAnswers = () => {};
+
   return (
     <div className="bottom-panel">
       <div className="h4">You scored {props.scores}/5 correct answers</div>

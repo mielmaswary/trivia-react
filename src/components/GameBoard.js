@@ -4,8 +4,6 @@ import OverlayBg from "./OverlayBg";
 import QuizBox from "./QuizBox";
 
 const GameBoard = (props) => {
-  console.log("gameboard render");
-
   const quizQuestions = props.quizData;
   const [markAnswersStatus, setMarkAnswersStatus] = useState(false);
   const quizQuestionsElements = quizQuestions.map((question, index) => (

@@ -7,8 +7,6 @@ import Answer from "./Answer";
 import Question from "./Question";
 
 const QuizBox = (props) => {
-  console.log("quizbox render");
-
   const [isCorrectAnswerClicked, setIsCorrectAnswerClicked] = useState(false);
   const [chosen, setChosen] = useState(-1);
 
@@ -20,13 +18,15 @@ const QuizBox = (props) => {
     shuffledAnswers = shuffle(shuffledAnswers);
   }, [props.quizData]);
 
-  const clickAnswerActions = (correctAnswer, chosenAnswer) => {
-    if (correctAnswer === chosenAnswer) {
-      props.setScores((pre) => pre + 1);
-      setIsCorrectAnswerClicked(true);
-      setIsDisabled(true);
+  const correctAnswerIndex = shuffledAnswers.indexOf(props.correctAnswer);
+
+  useEffect(() => {
+    if (props.markAnswersStatus) {
+      if (chosen === correctAnswerIndex) {
+        props.setScores((pre) => pre + 1);
+      }
     }
-  };
+  }, [props.markAnswersStatus]);
 
   const answersElements = shuffledAnswers.map((answer, index) => (
     <Answer
@@ -34,9 +34,7 @@ const QuizBox = (props) => {
       isCorrectAnswer={answer === props.correctAnswer}
       key={index}
       index={index}
-      clickAnswerActions={clickAnswerActions}
       correctAnswer={props.correctAnswer}
-      // isCorrectAnswerClicked={isCorrectAnswerClicked}
       className={
         index === chosen
           ? props.markAnswersStatus
@@ -47,8 +45,12 @@ const QuizBox = (props) => {
       setChosen={setChosen}
       chosen={chosen}
       markAnswersStatus={props.markAnswersStatus}
+      setScores={props.setScores}
+      scores={props.scores}
+      isCorrectAnswerChosen={index === chosen}
     />
   ));
+
   return (
     <div className={"quiz-box-container" + (isDisabled ? " disabled" : "")}>
       <Question question={props.question} />

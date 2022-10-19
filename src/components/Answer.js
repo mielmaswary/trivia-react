@@ -1,39 +1,32 @@
 import React, { useState } from "react";
+import { useMemo } from "react";
 import { useEffect } from "react";
 import { Markup } from "react-render-markup";
-//import useForceUpdate from "use-force-update";
 
 const Answer = (props) => {
+  //console.log(props.markAnswersStatus);
+  console.log(props.scores);
+
   const clickAnswerActions = props.clickAnswerActions;
   const clickHandler = (i) => {
     props.setChosen(i);
   };
 
-  // const className = props.markAnswersStatus
-  //   ? props.isCorrectAnswer
-  //     ? "correct-answer"
-  //     : props.chosen
-  //     ? "correct-chosen"
-  //     : props.className
-  //   : props.className;
-
   let className = props.className;
+
   if (props.markAnswersStatus) {
     if (props.isCorrectAnswer) {
       className = "correct-answer";
     }
   }
-
+  // useEffect(() => {
+  //   if (props.isCorrectAnswerChosen && props.markAnswersStatus) {
+  //     console.log("correct!");
+  //     props.setScores((pre) => pre + 1);
+  //   }
+  // }, [props.quizBoxRendered]);
   return (
-    <div
-      // className={
-      //   props.isCorrectAnswer && props.markAnswersStatus
-      //     ? "correct-answer"
-      //     : props.className
-      // }
-      className={className}
-      onClick={() => clickHandler(props.index)}
-    >
+    <div className={className} onClick={() => clickHandler(props.index)}>
       <Markup markup={props.answer} />
     </div>
   );
